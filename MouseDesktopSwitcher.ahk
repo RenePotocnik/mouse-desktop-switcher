@@ -12,18 +12,18 @@ mouseMove()
     while GetKeyState("MButton", "P") {
         Sleep(delayAfterHotkey)
         MouseGetPos &xPos, &yPos
-        ; If the mouse moved left, switch desktops to left
         if ((initialMousePosX - xPos) > moveThresh) {
+            ; If the mouse moved left, switch desktops to left
             Send "^#{Left}"
             return
         }
-        ; If the mouse moved right, switch desktops to right
         if ((xPos - initialMousePosX) > moveThresh) {
+            ; If the mouse moved right, switch desktops to right
             Send "^#{Right}"
             return
         }
     }
 }
 
-; Define the hotkey to activate - if you change the hotkey (Default: `MButton`) change at line `12` as well
-MButton::mouseMove()
+; Define the hotkey to activate - if you change the hotkey (Default: `^MButton`) change at line `12` as well
+^MButton::mouseMove()
